@@ -1,5 +1,5 @@
-package org.lessons.java.spring_la_mia_pizzeria_relazioni.repository;
-import org.lessons.java.spring_la_mia_pizzeria_relazioni.model.SpecialOffer;
+package org.lessons.java.pizzeria_web_api.repository;
+import org.lessons.java.pizzeria_web_api.model.SpecialOffer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SpecialOffersRepository extends JpaRepository<SpecialOffer, Integer> {

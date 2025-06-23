@@ -1,4 +1,4 @@
-package org.lessons.java.spring_la_mia_pizzeria_relazioni.model;
+package org.lessons.java.pizzeria_web_api.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

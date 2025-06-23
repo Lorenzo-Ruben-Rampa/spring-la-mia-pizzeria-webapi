@@ -1,4 +1,4 @@
-package org.lessons.java.spring_la_mia_pizzeria_relazioni.controller;
+package org.lessons.java.pizzeria_web_api.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

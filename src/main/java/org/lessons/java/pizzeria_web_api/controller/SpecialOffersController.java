@@ -1,5 +1,4 @@
-package org.lessons.java.spring_la_mia_pizzeria_relazioni.controller;
-import org.springframework.stereotype.Controller; 
+package org.lessons.java.pizzeria_web_api.controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,8 +9,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.validation.Valid;         
 import org.springframework.validation.BindingResult; 
-import org.lessons.java.spring_la_mia_pizzeria_relazioni.model.SpecialOffer; 
-import org.lessons.java.spring_la_mia_pizzeria_relazioni.repository.SpecialOffersRepository; 
+import org.lessons.java.pizzeria_web_api.model.SpecialOffer; 
+import org.lessons.java.pizzeria_web_api.repository.SpecialOffersRepository; 
+import org.springframework.stereotype.Controller;
 
 @Controller
 @RequestMapping("/special-offers")

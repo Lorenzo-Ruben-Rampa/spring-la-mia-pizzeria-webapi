@@ -1,20 +1,20 @@
-package org.lessons.java.spring_la_mia_pizzeria_relazioni.controller;
+package org.lessons.java.pizzeria_web_api.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.lessons.java.spring_la_mia_pizzeria_relazioni.repository.PizzasRepository;
+import org.lessons.java.pizzeria_web_api.repository.PizzasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import java.util.List;
-import org.lessons.java.spring_la_mia_pizzeria_relazioni.model.Pizza;
+import org.lessons.java.pizzeria_web_api.model.Pizza;
 import org.springframework.web.bind.annotation.RequestParam;
 import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
-import org.lessons.java.spring_la_mia_pizzeria_relazioni.model.SpecialOffer;
-import org.lessons.java.spring_la_mia_pizzeria_relazioni.repository.IngredientsRepository;
+import org.lessons.java.pizzeria_web_api.model.SpecialOffer;
+import org.lessons.java.pizzeria_web_api.repository.IngredientsRepository;
 
 @Controller
 @RequestMapping("/pizzas")
