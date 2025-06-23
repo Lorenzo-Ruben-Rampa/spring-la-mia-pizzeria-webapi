@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film non trovato</title>
+    <th:block th:insert="~{fragments :: styles}"></th:block>
+</head>
+<body>
+    <header>      
+        <th:block th:insert="~{fragments :: header}"></th:block>
+    </header>
+    <div class="container">
+        <h1>Ops! Film non trovato</h1>
+        <div class="error-code">Errore 404</div>
+        <p>La pizza che stai cercando non è disponibile.</p>
+        <p>Potrebbe essere stato rimosso o l'ID inserito non è corretto.</p>
+        <a th:href="@{/pizzas}" class="btn">Torna alla lista delle pizze</a>
+        <a th:href="@{/}" class="btn" style="margin-left: 10px;">Torna alla home</a>
+    </div>
+</body>
+</html>

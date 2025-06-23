@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pizza: [[${ingredient.name}]]</title>
+    <th:block th:insert="~{fragments :: styles}"></th:block>
+</head>
+<body>
+    <header>
+        <th:block th:insert="~{fragments :: header}"></th:block>
+    </header>
+    <main class="container mt-3">   
+        <div class="row justify-content-center">
+            <div class="col-md-6  d-flex justify-content-center flex-wrap">
+                <h1 class="text-center text-danger mt-5 mb-5">Ingrediente: <span th:text="${ingredient.name}"></span></h1>
+                <div class="card">
+                    <div class="row g-0 d-flex justify-content-center">
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <img class= "list-images" th:src="${ingredient.urlImage}" alt="${ingredient.name}">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="col-md-8">
+                                <div class="card mt-5 mb-3">
+                                    <p class="text-center"><a th:href="@{/ingredients}" class="btn btn-primary mt-3">Torna al Menu Ingredienti</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/2.9.3/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
+</body>
+</html>

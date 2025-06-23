@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aggiungi una nuova pizza</title>
+    <th:block th:insert="~{fragments :: styles}"></th:block>
+</head>
+<body>
+     <header>
+        <th:block th:insert="~{fragments :: header}"></th:block>
+    </header>
+    <main class="container mt-3">
+        <section class="row">
+            <h2 class="text-center mt-3 mb-3 text-danger mb-5">Aggiungi una nuova pizza all'elenco</h2>
+            <div class="container col-md-12 d-flex justify-content-center">
+                <form
+                    id="pizza-form"
+                    th:object="${pizza}"
+                    th:action="@{/pizzas/create}"
+                    method="post"
+                >
+                    <ul>
+                        <li>
+                            <label for="name">Inserire il nome della nuova pizza: </label>
+                            <input class="fixed-input" type="text" id="name" th:field="*{name}" th:errorClass="is-invalid">
+                            <div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+                                <ul>
+                                    <li th:each="err: ${#fields.errors('name')}" th:text="${err}">
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <label for="description">Inserire la descrizione della nuova pizza: </label>
+                            <textarea class="form-control" id="description" th:field="*{description}" rows="4" th:errorClass="is-invalid"></textarea>
+                            <div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
+                                <ul>
+                                    <li th:each="err: ${#fields.errors('description')}" th:text="${err}">
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                        <label for="price">Inserire il prezzo della nuova pizza: </label>
+                        <input type="number" step="0.01" class="small-input" id="price" th:field="*{price}" th:errorClass="is-invalid">
+                            <div th:if="${#fields.hasErrors('price')}" class="invalid-feedback">
+                                <ul>
+                                    <li th:each="err: ${#fields.errors('price')}" th:text="${err}">
+                                    </li>
+                                </ul>
+                            </div>                       
+                        </li>
+                        <li>
+                            <label for="urlImage">Inserire l'URL dell'immagine (deve iniziare sempre con /img/): </label>
+                            <input type="text" class="form-control" id="urlImage" th:field="*{urlImage}" th:errorClass="is-invalid">
+                            <div th:if="${#fields.hasErrors('urlImage')}" class="invalid-feedback">
+                                <ul>
+                                    <li th:each="err: ${#fields.errors('urlImage')}" th:text="${err}">
+                                    </li>
+                                </ul>
+                            </div>                       
+                        </li>
+                        <li>
+                            <label class="mb-2">Seleziona gli ingredienti:</label>
+                            <ul class="list-unstyled d-flex flex-row flex-wrap mb-3 self-center"> 
+                                <li th:each="ingredient : ${ingredients}" class="single-ingredient form-check me-3 small-container">
+                                    <input type="checkbox" th:id="|ingredient-${ingredient.id}|" th:field="${pizza.ingredients}" th:value="${ingredient.id}" class="form-check-input">
+                                    <label th:for="|ingredient-${ingredient.id}" class="form-check-label" th:text="${ingredient.name}" />
+                                </li>
+                            </ul>                            
+                        </li>
+                    </ul>
+                    <div class="text-center mt-4 mb-5">
+                        <button type="submit" class="btn btn-primary me-2">Aggiungi Pizza</button>
+                        <a th:href="@{/pizzas}" class="btn btn-secondary">Annulla</a>
+                    </div>                                   
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

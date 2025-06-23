@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pizza: [[${pizza.name}]]</title>
+    <th:block th:insert="~{fragments :: styles}"></th:block>
+</head>
+<body>
+    <header>
+        <th:block th:insert="~{fragments :: header}"></th:block>
+    </header>
+    <main class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="text-center text-danger">Pizza <span th:text="${pizza.name}"></span></h1>
+                <div class="row">
+                    <div class="row g-0 d-flex justify-content-center">
+                        <div class="col-md-12 fixed">
+                            <img th:src="${pizza.urlImage}" th:alt="${pizza.name}" class="mt-4 mb-5 img-fluid rounded-start" style="max-height: 400px; width: 100%; object-fit: cover;">                        
+                        </div>
+                <div class="d-flex justify-content-space-between">
+                    <div class="col-md-6 fixed-h orange mt-5 mb-3">
+                        <div class="card-body mt-5 mb-3 d-flex justify-content-center flex-wrap">
+                            <h3 class="mb-5 text-warning">Elenco Offerte Speciali Attive:</h3>
+                            <ul class="list-unstyled"> 
+                                <li th:with="activeOffer=${pizza.getActiveSpecialOffer()}">
+                                    <div th:if="${activeOffer != null}" class="mb-3 d-flex justify-content-center flex-wrap">
+                                        <p class="fw-bold fs-2 text-center">
+                                            <span th:text="${activeOffer.title}"></span> (Sconto: <span th:text="${activeOffer.discount}"></span>%)
+                                        </p>
+                                        <div>
+                                            <button class="btn btn-warning btn-sm">
+                                                <a th:href="@{/special-offers/edit/{id}(id=${activeOffer.id})}" class="btn btn-warning btn-sm">Modifica Offerta</a>
+                                            </button>
+                                            <form th:action="@{/special-offers/delete/{id}(id=${activeOffer.id})}" method="post" class="d-inline-block">
+                                                <button type="submit" class="btn btn-danger btn-sm p-2" onclick="return confirm('Sei sicuro di voler eliminare questa offerta?')">Elimina Offerta</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div th:unless="${activeOffer != null}">
+                                        <p>Nessuna offerta speciale attiva per questa pizza.</p>
+                                    </div>
+                                </li>
+                                <li class="fw-bold">Ingredienti: </li>
+                                <ul class="list-unstyled">
+                                    <li th:each="ingredient : ${pizza.ingredients}">
+                                        <span th:text="${ingredient.name}">[Nome Ingrediente]</span>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-8 fixed-h orange mt-5 mb-3">
+                        <div class="card-body mt-5 mb-3">
+                            <p class="card-text"><strong>Descrizione:</strong> <span th:text="${pizza.description}"></span></p>
+                            <p class="card-text fs-3 text-center text-warning"><strong>Prezzo:</strong> <span th:text="${pizza.price}"></span> &euro;</p>
+                            <p class="text-center"><a th:href="@{/pizzas}" class="btn btn-primary mt-3">Torna al Menu</a></p>
+                            <div class="d-flex justify-content-center">
+                                <button class="btn btn-warning btn-sm">
+                                    <a th:href="@{/pizzas/{id}/special-offers(id=${pizza.id})}" class="btn btn-warning btn-sm">Crea nuova offerta speciale</a> 
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/2.9.3/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
+    </body>
+    </html>

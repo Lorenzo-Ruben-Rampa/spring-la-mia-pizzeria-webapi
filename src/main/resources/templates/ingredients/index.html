@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lista Pizze</title>
+    <th:block th:insert="~{fragments :: styles}"></th:block>
+</head>
+<body>
+     <header>
+        <th:block th:insert="~{fragments :: header}"></th:block>
+    </header>
+    <main class="container mt-3">
+        <section class="row d-flex justify-content-center">
+            <h2 class="text-center mt-3 mb-5 text-danger">I nostri ingredienti</h2>
+            <div class="d-flex justify-content-center mt-2 mb-5"> 
+                <button class="btn btn-warning btn-sm">
+                    <a th:href="@{/ingredients/create}" class="btn btn-warning btn-sm">Aggiungi un nuovo ingrediente</a> 
+                </button> 
+            </div>
+            <div class="col-6">
+            <table class="table" th:if="${ingredients.size() > 0}">
+                <tbody>
+                    <tr th:each="ingredient : ${ingredients}" th:object="${ingredient}">
+                        <td class="align-middle text-warning">[[*{name}]]</td>
+                        <td class="align-middle" ><a th:href="@{/ingredients/{id}(id=${ingredient.id})}" class="btn btn-success btn-sm">Dettagli</a></td>                        <td class="align-middle"> <a th:href="@{/ingredients/edit/{id}(id=${ingredient.id})}" class="btn btn-light btn-sm">Modifica</a> </td>
+                        <td class="align-middle">
+                            <form th:action="@{'/ingredients/delete/{id}' (id=${ingredient.id})}" method="post">
+                                <button class="btn btn-danger btn-sm" type="submit" id="submitButton">
+                                    <i class="fas fa-trash-alt"></i>Cancella
+                                </button>
+                            </form>
+                        </td>   
+                    </tr>
+                </tbody>
+            </table>
+            <p th:text="'Nessuna ingrediente disponibile'" th:unless="${ingredients.size > 0}" />
+    </main>
+</body>
+</html>

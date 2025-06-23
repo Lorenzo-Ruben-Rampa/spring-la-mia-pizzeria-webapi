@@ -1,0 +1,108 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+ul {
+    list-style: none;
+}
+
+.space-left {
+    margin-left: 2em;
+}
+
+.fixed {
+    width: 600px;
+    height: 400px;
+}
+
+fixed-h {
+    height: 500px;
+}
+        
+.hero-section {
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+}
+
+footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+}
+
+.inline {
+    display: inline;
+}
+
+header {
+    height: 300px;
+}
+
+.navbar {
+        background-image: url("../img/tatooine-header.jpg");
+        height:300px;
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-position: center;  
+}
+
+.self-center {
+position:relative;
+left: 15%;
+}
+
+.small-container {
+    max-width: 200px;
+}
+
+.table {
+    color: white;
+}
+
+.centered {
+    position: absolute;
+    left: 25%;
+}
+
+.list-images {
+    height: 300px;
+    width: 450px;
+}
+
+td {
+    text-align: center;
+}
+
+.card-body {
+    background-color:rgb(255, 72, 0);
+}
+
+.orange{
+        background-color:rgb(255, 72, 0);
+}
+
+.card {
+    background-color: black;
+}
+
+.fixed-input {
+    margin-top: 15px;
+    width: 300px;
+}
+
+label {
+    width: 470px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.small-input {
+    width: 100px;
+    margin-left: 110px;
+}
