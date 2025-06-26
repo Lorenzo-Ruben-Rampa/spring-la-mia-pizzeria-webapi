@@ -35,7 +35,7 @@ public class PizzasController {
     public String index (Model model, @RequestParam(name="pizzaName", required=false) String searchPizzaName) {
         List<Pizza> pizzas;
         if (searchPizzaName != null && !searchPizzaName.isBlank()) {
-            pizzas = pizzaService.findByTitle(searchPizzaName);
+            pizzas = pizzaService.findByName(searchPizzaName);
             model.addAttribute("searchPizzaName", searchPizzaName);
         } else {
             pizzas = pizzaService.findAll();

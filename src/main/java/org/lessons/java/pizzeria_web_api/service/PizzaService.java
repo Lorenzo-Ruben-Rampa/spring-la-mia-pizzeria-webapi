@@ -40,8 +40,8 @@ public class PizzaService {
             return pizzaAttempt.get();
         }
 
-        public List<Pizza> findByTitle(String title) {
-            return pizzaRepository.findByTitleContainingIgnoreCase(title);
+        public List<Pizza> findByName(String title) {
+            return pizzaRepository.findByNameContainingIgnoreCase(title);
         }
 
         public Pizza create(Pizza pizza) {
