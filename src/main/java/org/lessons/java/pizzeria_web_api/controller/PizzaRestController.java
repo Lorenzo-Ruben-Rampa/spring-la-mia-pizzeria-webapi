@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import java.util.Optional;
 
 
 @RestController
@@ -29,25 +32,38 @@ public class PizzaRestController {
     }
 
     @GetMapping("/{id}")
-    public Pizza show(@PathVariable Integer id) {
-        Pizza pizza = pizzaService.getById(id);
-        return pizza;
+    public ResponseEntity<Pizza> show(@PathVariable Integer id) {
+        Optional<Pizza> pizza = pizzaService.findById(id);
+        if (pizza.isEmpty()) {
+            return new ResponseEntity<Pizza>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Pizza>(pizza.get(), HttpStatus.OK);
     }
     
     @PostMapping
-    public Pizza store(@RequestBody Pizza pizza) {
-        return pizzaService.create(pizza);
+    public ResponseEntity<Pizza> store(@RequestBody Pizza pizza) {
+        return new ResponseEntity<Pizza>(pizzaService.create(pizza), HttpStatus.OK);
     }
     
     @PutMapping("/{id}")
-    public Pizza update(@RequestBody Pizza pizza, @PathVariable Integer id) {
-        pizza.setId(id); 
-        return pizzaService.update(pizza);
+    public ResponseEntity<Pizza> update(@RequestBody Pizza pizza, @PathVariable Integer id) {
+      
+
+         if (pizzaService.findById(id).isEmpty()) {
+            return new ResponseEntity<Pizza>(HttpStatus.NOT_FOUND);
+        }
+          pizza.setId(id); 
+        return new ResponseEntity<Pizza>(pizzaService.update(pizza), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
+    public ResponseEntity<Pizza> delete(@PathVariable Integer id) {
+        if (pizzaService.findById(id).isEmpty()) {
+            return new ResponseEntity<Pizza>(HttpStatus.NOT_FOUND);
+        }
+
         pizzaService.deleteById(id);
+        return new ResponseEntity<Pizza>(HttpStatus.OK);
     }
 
 }
